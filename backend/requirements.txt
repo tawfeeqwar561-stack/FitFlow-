@@ -1,0 +1,25 @@
+# FastAPI Framework
+fastapi
+uvicorn[standard]
+
+# Database
+sqlalchemy
+asyncpg
+
+# Environment Variables
+python-dotenv
+
+# Data Validation
+pydantic
+pydantic-settings
+
+# Authentication
+python-jose[cryptography]
+passlib[bcrypt]
+bcrypt==4.0.1
+
+# File Uploads
+python-multipart
+
+# HTTP Requests (for Google OAuth)
+httpx
