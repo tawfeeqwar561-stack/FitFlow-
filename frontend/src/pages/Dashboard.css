@@ -1,0 +1,128 @@
+.dashboard {
+  padding: var(--spacing-xl) 0;
+  min-height: 100vh;
+}
+
+.dashboard-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.dashboard-header h1 {
+  font-size: 2rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.dashboard-header p {
+  color: var(--text-secondary);
+}
+
+.workout-levels {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-lg);
+  margin-bottom: var(--spacing-xl);
+}
+
+.level-card {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-lg);
+  text-align: center;
+  transition: all 0.3s ease;
+  border: 2px solid transparent;
+  position: relative;
+  overflow: hidden;
+}
+
+.level-card:hover {
+  border-color: var(--card-color);
+  transform: translateY(-5px);
+}
+
+.level-icon {
+  font-size: 3rem;
+  display: block;
+  margin-bottom: var(--spacing-md);
+}
+
+.level-title {
+  color: var(--text-primary);
+  font-size: 1.25rem;
+  margin-bottom: var(--spacing-sm);
+}
+
+.level-description {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  margin-bottom: var(--spacing-md);
+}
+
+.level-arrow {
+  color: var(--card-color);
+  font-size: 1.5rem;
+  opacity: 0;
+  transition: opacity 0.3s ease;
+}
+
+.level-card:hover .level-arrow {
+  opacity: 1;
+}
+
+.quick-actions {
+  margin-top: var(--spacing-xl);
+}
+
+.quick-actions h2 {
+  margin-bottom: var(--spacing-md);
+}
+
+.actions-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: var(--spacing-md);
+}
+
+.action-card {
+  background-color: var(--bg-secondary);
+  padding: var(--spacing-lg);
+  border-radius: var(--radius-md);
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  transition: background-color 0.3s ease;
+}
+
+.action-card:hover {
+  background-color: var(--bg-card);
+}
+
+.action-icon {
+  font-size: 2rem;
+}
+
+.action-card span:last-child {
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+}
+
+@media (max-width: 992px) {
+  .workout-levels {
+    grid-template-columns: repeat(2, 1fr);
+  }
+  
+  .actions-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
+@media (max-width: 576px) {
+  .workout-levels {
+    grid-template-columns: 1fr;
+  }
+  
+  .actions-grid {
+    grid-template-columns: 1fr;
+  }
+}
