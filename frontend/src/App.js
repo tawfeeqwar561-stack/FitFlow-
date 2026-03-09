@@ -13,6 +13,7 @@ import Login from './pages/Login';
 import Signup from './pages/Signup';
 import Dashboard from './pages/Dashboard';
 import Workouts from './pages/Workouts';
+import Mindfulness from './pages/Mindfulness';
 
 // Styles
 import './styles/main.css';
@@ -57,6 +58,14 @@ const AppContent = () => {
           element={
             <ProtectedRoute>
               <Workouts />
+            </ProtectedRoute>
+          }
+        />
+        <Route
+          path="/mindfulness"
+          element={
+            <ProtectedRoute>
+              <Mindfulness />
             </ProtectedRoute>
           }
         />

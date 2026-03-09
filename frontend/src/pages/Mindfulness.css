@@ -1,0 +1,84 @@
+.mindfulness-page {
+  min-height: 100vh;
+  padding: var(--spacing-xl) 0;
+}
+
+.mindfulness-header {
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+}
+
+.mindfulness-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: var(--spacing-sm);
+  background: var(--gradient-primary);
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.mindfulness-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* Tabs */
+.mindfulness-tabs {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.tab-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: var(--spacing-sm);
+  padding: var(--spacing-lg) var(--spacing-2xl);
+  background: var(--bg-card);
+  border: 2px solid var(--border-color);
+  border-radius: var(--radius-lg);
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.tab-btn:hover {
+  border-color: var(--primary-color);
+  transform: translateY(-3px);
+}
+
+.tab-btn.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+}
+
+.tab-btn.active .tab-label {
+  color: white;
+}
+
+.tab-icon {
+  font-size: 2rem;
+}
+
+.tab-label {
+  font-size: 0.95rem;
+  font-weight: 600;
+  color: var(--text-secondary);
+}
+
+/* Content */
+.mindfulness-content {
+  animation: fadeIn 0.5s ease;
+}
+
+@media (max-width: 576px) {
+  .mindfulness-tabs {
+    flex-direction: column;
+  }
+  
+  .tab-btn {
+    flex-direction: row;
+    justify-content: center;
+  }
+}

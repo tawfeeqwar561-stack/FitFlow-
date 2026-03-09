@@ -1,0 +1,220 @@
+.quotes-section {
+  max-width: 800px;
+  margin: 0 auto;
+}
+
+/* Categories */
+.quotes-categories {
+  display: flex;
+  justify-content: center;
+  flex-wrap: wrap;
+  gap: var(--spacing-sm);
+  margin-bottom: var(--spacing-2xl);
+}
+
+.category-btn {
+  display: flex;
+  align-items: center;
+  gap: var(--spacing-xs);
+  padding: var(--spacing-sm) var(--spacing-md);
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-full);
+  color: var(--text-secondary);
+  font-size: 0.9rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.category-btn:hover {
+  border-color: var(--primary-color);
+  color: var(--text-primary);
+}
+
+.category-btn.active {
+  background: var(--gradient-primary);
+  border-color: transparent;
+  color: white;
+}
+
+/* Quote Card */
+.quote-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-xl);
+  padding: var(--spacing-3xl);
+  text-align: center;
+  margin-bottom: var(--spacing-xl);
+  position: relative;
+  overflow: hidden;
+  transition: var(--transition-normal);
+}
+
+.quote-card::before {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: 0;
+  right: 0;
+  height: 4px;
+  background: var(--gradient-primary);
+}
+
+.quote-card.animating {
+  opacity: 0;
+  transform: scale(0.95);
+}
+
+.quote-icon {
+  font-size: 3rem;
+  margin-bottom: var(--spacing-lg);
+  animation: float 3s ease-in-out infinite;
+}
+
+.quote-text {
+  font-size: 1.5rem;
+  font-weight: 500;
+  line-height: 1.6;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-lg);
+  font-style: italic;
+}
+
+.quote-author {
+  display: block;
+  font-size: 1rem;
+  color: var(--primary-color);
+  font-style: normal;
+  font-weight: 600;
+}
+
+.quote-actions {
+  display: flex;
+  justify-content: center;
+  gap: var(--spacing-md);
+  margin-top: var(--spacing-xl);
+}
+
+.quote-action-btn {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
+  background: var(--bg-glass);
+  border: 1px solid var(--border-color);
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: var(--transition-normal);
+}
+
+.quote-action-btn:hover {
+  background: var(--bg-glass-hover);
+  transform: scale(1.1);
+}
+
+.quote-action-btn.favorited {
+  background: rgba(239, 68, 68, 0.1);
+  border-color: #ef4444;
+}
+
+/* Controls */
+.quote-controls {
+  text-align: center;
+  margin-bottom: var(--spacing-2xl);
+}
+
+/* Favorites Section */
+.favorites-section {
+  margin-top: var(--spacing-2xl);
+}
+
+.favorites-section h3 {
+  margin-bottom: var(--spacing-lg);
+  color: var(--text-secondary);
+  font-size: 1rem;
+}
+
+.favorites-grid {
+  display: grid;
+  grid-template-columns: repeat(2, 1fr);
+  gap: var(--spacing-md);
+}
+
+.favorite-card {
+  background: var(--bg-card);
+  border: 1px solid var(--border-color);
+  border-radius: var(--radius-md);
+  padding: var(--spacing-md);
+  position: relative;
+}
+
+.favorite-card p {
+  font-size: 0.9rem;
+  color: var(--text-primary);
+  margin-bottom: var(--spacing-sm);
+  font-style: italic;
+}
+
+.favorite-card cite {
+  font-size: 0.8rem;
+  color: var(--text-muted);
+}
+
+.remove-favorite {
+  position: absolute;
+  top: var(--spacing-sm);
+  right: var(--spacing-sm);
+  width: 24px;
+  height: 24px;
+  border-radius: 50%;
+  background: var(--danger-color);
+  border: none;
+  color: white;
+  font-size: 0.75rem;
+  cursor: pointer;
+  opacity: 0;
+  transition: var(--transition-normal);
+}
+
+.favorite-card:hover .remove-favorite {
+  opacity: 1;
+}
+
+/* Daily Reminder */
+.daily-reminder {
+  background: linear-gradient(135deg, var(--primary-light) 0%, rgba(139, 92, 246, 0.1) 100%);
+  border: 1px solid var(--primary-color);
+  border-radius: var(--radius-lg);
+  padding: var(--spacing-xl);
+  text-align: center;
+  margin-top: var(--spacing-2xl);
+}
+
+.daily-reminder h4 {
+  margin-bottom: var(--spacing-sm);
+  color: var(--text-primary);
+}
+
+.daily-reminder p {
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+@media (max-width: 768px) {
+  .quote-text {
+    font-size: 1.25rem;
+  }
+  
+  .favorites-grid {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (max-width: 576px) {
+  .quote-card {
+    padding: var(--spacing-xl);
+  }
+  
+  .quote-text {
+    font-size: 1.1rem;
+  }
+}
