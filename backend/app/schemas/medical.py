@@ -1,26 +1,26 @@
 from pydantic import BaseModel
-from typing import Optional, List
+from typing import Optional, List, Dict, Any
 from datetime import datetime, date, time
-from uuid import UUID
 
 
 # --- Symptom Schemas ---
 
 class SymptomCreate(BaseModel):
-    description: str
-    body_part: Optional[str] = None
-    severity: str = "mild"
-    during_exercise: Optional[str] = None
+    name: str
+    severity: Optional[int] = None
+    description: Optional[str] = None
+    started_at: Optional[datetime] = None
 
 
 class SymptomResponse(BaseModel):
-    id: UUID
-    user_id: UUID
-    description: str
-    body_part: Optional[str]
-    severity: str
-    during_exercise: Optional[str]
-    reported_at: datetime
+    id: int
+    user_id: int
+    name: str
+    severity: Optional[int]
+    description: Optional[str]
+    started_at: Optional[datetime]
+    ended_at: Optional[datetime]
+    created_at: datetime
 
     class Config:
         from_attributes = True
@@ -29,27 +29,33 @@ class SymptomResponse(BaseModel):
 class DoctorSuggestion(BaseModel):
     doctor_type: str
     reason: str
-    urgency: str  # low, medium, high
+    urgency: str
 
 
 # --- Doctor Visit Schemas ---
 
 class DoctorVisitCreate(BaseModel):
-    symptom_id: Optional[UUID] = None
-    doctor_type: Optional[str] = None
-    doctor_name: Optional[str] = None
-    doctor_feedback: Optional[str] = None
-    visit_date: Optional[date] = None
+    doctor_name: str
+    specialty: Optional[str] = None
+    visit_date: date
+    reason: Optional[str] = None
+    diagnosis: Optional[str] = None
+    prescription: Optional[str] = None
+    follow_up_date: Optional[date] = None
+    notes: Optional[str] = None
 
 
 class DoctorVisitResponse(BaseModel):
-    id: UUID
-    user_id: UUID
-    symptom_id: Optional[UUID]
-    doctor_type: Optional[str]
-    doctor_name: Optional[str]
-    doctor_feedback: Optional[str]
-    visit_date: Optional[date]
+    id: int
+    user_id: int
+    doctor_name: str
+    specialty: Optional[str]
+    visit_date: date
+    reason: Optional[str]
+    diagnosis: Optional[str]
+    prescription: Optional[str]
+    follow_up_date: Optional[date]
+    notes: Optional[str]
     created_at: datetime
 
     class Config:
@@ -64,7 +70,9 @@ class MedicationCreate(BaseModel):
     frequency: Optional[str] = None
     start_date: Optional[date] = None
     end_date: Optional[date] = None
-    notes: Optional[str] = None
+    prescribed_by: Optional[str] = None
+    purpose: Optional[str] = None
+    side_effects: Optional[str] = None
 
 
 class MedicationUpdate(BaseModel):
@@ -73,20 +81,24 @@ class MedicationUpdate(BaseModel):
     frequency: Optional[str] = None
     start_date: Optional[date] = None
     end_date: Optional[date] = None
+    prescribed_by: Optional[str] = None
+    purpose: Optional[str] = None
+    side_effects: Optional[str] = None
     is_active: Optional[bool] = None
-    notes: Optional[str] = None
 
 
 class MedicationResponse(BaseModel):
-    id: UUID
-    user_id: UUID
+    id: int
+    user_id: int
     name: str
     dosage: Optional[str]
     frequency: Optional[str]
     start_date: Optional[date]
     end_date: Optional[date]
+    prescribed_by: Optional[str]
+    purpose: Optional[str]
+    side_effects: Optional[str]
     is_active: bool
-    notes: Optional[str]
     created_at: datetime
 
     class Config:
@@ -96,16 +108,33 @@ class MedicationResponse(BaseModel):
 # --- Reminder Schemas ---
 
 class ReminderCreate(BaseModel):
-    medication_id: UUID
+    medication_id: int
     reminder_time: time
-    is_enabled: bool = True
+    is_active: bool = True
 
 
 class ReminderResponse(BaseModel):
-    id: UUID
-    medication_id: UUID
+    id: int
+    medication_id: int
+    user_id: int
     reminder_time: time
-    is_enabled: bool
+    is_active: bool
+    created_at: datetime
 
     class Config:
         from_attributes = True
+
+
+# --- Chat Schemas ---
+
+class ChatMessage(BaseModel):
+    message: str
+    context: Optional[str] = None
+    history: Optional[List[Dict[str, Any]]] = None  # ← for Gemini memory
+
+
+class ChatResponse(BaseModel):
+    reply: str
+    suggestions: Optional[List[DoctorSuggestion]] = None
+    exercise_tips: Optional[Dict[str, Any]] = None
+    context: Optional[str] = None

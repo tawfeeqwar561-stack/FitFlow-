@@ -23,9 +23,9 @@ class GoogleLogin(BaseModel):
 class UserResponse(BaseModel):
     id: UUID
     email: str
-    auth_provider: str
     is_active: bool
     created_at: datetime
+    auth_provider: Optional[str] = None  # ✅ Not in model, kept optional
 
     class Config:
         from_attributes = True
@@ -43,11 +43,11 @@ class TokenData(BaseModel):
 # --- Profile Schemas ---
 
 class ProfileCreate(BaseModel):
-    username: Optional[str] = None
+    username: Optional[str] = None       # stored on User model
     age: Optional[int] = None
     height: Optional[float] = None
     weight: Optional[float] = None
-    profile_picture: Optional[str] = None
+    profile_picture: Optional[str] = None  # maps to profile_image in DB
     fitness_level: Optional[str] = "beginner"
 
 
@@ -63,22 +63,37 @@ class ProfileUpdate(BaseModel):
 class ProfileResponse(BaseModel):
     id: UUID
     user_id: UUID
-    username: Optional[str]
-    age: Optional[int]
-    height: Optional[float]
-    weight: Optional[float]
-    profile_picture: Optional[str]
-    fitness_level: str
+    username: Optional[str] = None       # ✅ Added default
+    age: Optional[int] = None            # ✅ Added default
+    height: Optional[float] = None       # ✅ Added default
+    weight: Optional[float] = None       # ✅ Added default
+    profile_picture: Optional[str] = None  # ✅ Added default (maps to profile_image)
+    fitness_level: str = "beginner"      # ✅ Added default
     created_at: datetime
 
     class Config:
         from_attributes = True
 
+    # ✅ Handles profile_image → profile_picture name mismatch
+    @classmethod
+    def from_orm_profile(cls, profile):
+        return cls(
+            id=profile.id,
+            user_id=profile.user_id,
+            username=None,               # pulled from User model separately
+            age=profile.age,
+            height=profile.height,
+            weight=profile.weight,
+            profile_picture=profile.profile_image,  # ✅ remapped here
+            fitness_level=profile.fitness_level or "beginner",
+            created_at=profile.created_at,
+        )
+
 
 class UserWithProfile(BaseModel):
     id: UUID
     email: str
-    profile: Optional[ProfileResponse]
+    profile: Optional[ProfileResponse] = None  # ✅ Added default
 
     class Config:
         from_attributes = True

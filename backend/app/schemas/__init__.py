@@ -4,3 +4,4 @@ from app.schemas.workout import *
 from app.schemas.nutrition import *
 from app.schemas.medical import *
 from app.schemas.mindfulness import *
+from app.schemas.calorie import *
