@@ -8,40 +8,38 @@ import Navbar from './components/common/Navbar';
 import Loader from './components/common/Loader';
 
 // Pages
-import Home from './pages/Home';
-import Login from './pages/Login';
-import Signup from './pages/Signup';
-import Dashboard from './pages/Dashboard';
-import Workouts from './pages/Workouts';
+import Home       from './pages/Home';
+import Login      from './pages/Login';
+import Signup     from './pages/Signup';
+import Dashboard  from './pages/Dashboard';
+import Workouts   from './pages/Workouts';
 import Mindfulness from './pages/Mindfulness';
+import Calories   from './pages/Calories';
+import Medical    from './pages/Medical';       // ✅ ADD THIS
 
 // Styles
 import './styles/main.css';
 
-// Protected Route Component
+// ── Protected Route ───────────────────────────────────────────────────────────
 const ProtectedRoute = ({ children }) => {
   const { user, loading } = useAuth();
 
-  if (loading) {
-    return <Loader />;
-  }
-
-  if (!user) {
-    return <Navigate to="/login" />;
-  }
+  if (loading) return <Loader />;
+  if (!user)   return <Navigate to="/login" />;
 
   return children;
 };
 
-// App Content with Routes
+// ── App Routes ────────────────────────────────────────────────────────────────
 const AppContent = () => {
   return (
     <Router>
       <Navbar />
       <Routes>
+
         {/* Public Routes */}
-        <Route path="/" element={<Home />} />
-        <Route path="/login" element={<Login />} />
+        <Route path="/"       element={<Home />} />
+        <Route path="/login"  element={<Login />} />
         <Route path="/signup" element={<Signup />} />
 
         {/* Protected Routes */}
@@ -69,12 +67,34 @@ const AppContent = () => {
             </ProtectedRoute>
           }
         />
+        <Route
+          path="/calories"
+          element={
+            <ProtectedRoute>
+              <Calories />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* ✅ Medical Route */}
+        <Route
+          path="/medical"
+          element={
+            <ProtectedRoute>
+              <Medical />
+            </ProtectedRoute>
+          }
+        />
+
+        {/* Catch all → redirect to home */}
+        <Route path="*" element={<Navigate to="/" />} />
+
       </Routes>
     </Router>
   );
 };
 
-// Main App Component
+// ── Main App ──────────────────────────────────────────────────────────────────
 function App() {
   return (
     <ThemeProvider>

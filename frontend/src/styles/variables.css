@@ -72,6 +72,26 @@
   /* Font */
   --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
   --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /*  ADDED: Card aliases — used in Calories.css */
+  --card-bg: rgba(30, 30, 45, 0.8);        /* = --bg-card */
+  --card-bg-hover: rgba(40, 40, 60, 0.9);  /* = --bg-card-hover */
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.4);
+
+  /*  ADDED: Input background */
+  --input-bg: rgba(255, 255, 255, 0.05);
+  --input-bg-focus: rgba(255, 255, 255, 0.08);
+
+  /*  ADDED: Success/Error semantic colors */
+  --success-color: #10b981;
+  --success-light: rgba(16, 185, 129, 0.1);
+  --error-color: #ef4444;
+  --error-light: rgba(239, 68, 68, 0.1);
+  --warning-light: rgba(245, 158, 11, 0.1);
+  --info-light: rgba(59, 130, 246, 0.1);
+
+  /*  ADDED: Navbar height reference */
+  --navbar-height: 80px;
 }
 
 /* ==================== LIGHT THEME ==================== */
@@ -95,7 +115,8 @@
   --gradient-secondary: linear-gradient(135deg, #059669 0%, #0d9488 100%);
   --gradient-danger: linear-gradient(135deg, #dc2626 0%, #ea580c 100%);
   --gradient-dark: linear-gradient(135deg, #e2e8f0 0%, #f1f5f9 100%);
-  --gradient-glow: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%, rgba(124, 58, 237, 0.1) 100%);
+  --gradient-glow: linear-gradient(135deg, rgba(79, 70, 229, 0.1) 0%,
+                                           rgba(124, 58, 237, 0.1) 100%);
 
   /* Background Colors */
   --bg-primary: #f8fafc;
@@ -122,4 +143,50 @@
   --shadow-lg: 0 10px 40px rgba(0, 0, 0, 0.15);
   --shadow-glow: 0 0 30px rgba(79, 70, 229, 0.2);
   --shadow-glow-sm: 0 0 15px rgba(79, 70, 229, 0.15);
+
+  /* Border Radius — same as dark */
+  --radius-sm: 8px;
+  --radius-md: 12px;
+  --radius-lg: 20px;
+  --radius-xl: 28px;
+  --radius-full: 9999px;
+
+  /* Spacing — same as dark */
+  --spacing-xs: 4px;
+  --spacing-sm: 8px;
+  --spacing-md: 16px;
+  --spacing-lg: 24px;
+  --spacing-xl: 32px;
+  --spacing-2xl: 48px;
+  --spacing-3xl: 64px;
+
+  /* Transitions — same as dark */
+  --transition-fast: 0.15s ease;
+  --transition-normal: 0.3s ease;
+  --transition-slow: 0.5s ease;
+  --transition-bounce: 0.4s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+
+  /* Font — same as dark */
+  --font-primary: 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif;
+  --font-mono: 'JetBrains Mono', 'Fira Code', monospace;
+
+  /*  ADDED: Card aliases */
+  --card-bg: rgba(255, 255, 255, 0.9);
+  --card-bg-hover: rgba(255, 255, 255, 1);
+  --card-shadow: 0 4px 20px rgba(0, 0, 0, 0.1);
+
+  /*  ADDED: Input background */
+  --input-bg: rgba(0, 0, 0, 0.03);
+  --input-bg-focus: rgba(0, 0, 0, 0.05);
+
+  /*  ADDED: Semantic colors */
+  --success-color: #059669;
+  --success-light: rgba(5, 150, 105, 0.1);
+  --error-color: #dc2626;
+  --error-light: rgba(220, 38, 38, 0.1);
+  --warning-light: rgba(217, 119, 6, 0.1);
+  --info-light: rgba(37, 99, 235, 0.1);
+
+  /*  ADDED: Navbar height reference */
+  --navbar-height: 80px;
 }
