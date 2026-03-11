@@ -1,0 +1,1516 @@
+/* ==================== CALORIES PAGE STYLES ==================== */
+
+.calories-page {
+  min-height: 100vh;
+  padding: 2rem 1rem;
+  padding-top: 100px;
+}
+
+.calories-container {
+  max-width: 900px;
+  margin: 0 auto;
+}
+
+/* ==================== HEADER ==================== */
+.calories-header {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.calories-header h1 {
+  font-size: 2.5rem;
+  margin-bottom: 0.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  -webkit-background-clip: text;
+  -webkit-text-fill-color: transparent;
+  background-clip: text;
+}
+
+.calories-header p {
+  color: var(--text-secondary);
+  font-size: 1.1rem;
+}
+
+/* ==================== TABS ==================== */
+.calories-tabs {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--card-bg);
+  padding: 0.5rem;
+  border-radius: 16px;
+  box-shadow: var(--shadow-sm);
+  overflow-x: auto;
+}
+
+.calories-tabs::-webkit-scrollbar {
+  height: 4px;
+}
+
+.calories-tabs::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+.calories-tabs::-webkit-scrollbar-thumb {
+  background: var(--border-color);
+  border-radius: 4px;
+}
+
+.tab-btn {
+  flex: 1;
+  min-width: 100px;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 0.8rem 0.5rem;
+  border: none;
+  background: transparent;
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  color: var(--text-secondary);
+}
+
+.tab-btn:hover {
+  background: var(--bg-secondary);
+}
+
+.tab-btn.active {
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+}
+
+.tab-icon {
+  font-size: 1.3rem;
+}
+
+.tab-text {
+  font-size: 0.8rem;
+  font-weight: 500;
+}
+
+/* ==================== MESSAGES ==================== */
+.message {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1rem 1.25rem;
+  border-radius: 12px;
+  margin-bottom: 1rem;
+  animation: slideDown 0.3s ease;
+}
+
+@keyframes slideDown {
+  from {
+    opacity: 0;
+    transform: translateY(-10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+.error-message {
+  background: #fee2e2;
+  border: 1px solid #fca5a5;
+  color: #dc2626;
+}
+
+.success-message {
+  background: #dcfce7;
+  border: 1px solid #86efac;
+  color: #16a34a;
+}
+
+.message button {
+  background: none;
+  border: none;
+  font-size: 1.3rem;
+  cursor: pointer;
+  opacity: 0.7;
+  color: inherit;
+}
+
+.message button:hover {
+  opacity: 1;
+}
+
+/* ==================== TAB CONTENT ==================== */
+.tab-content {
+  background: var(--card-bg);
+  border-radius: 20px;
+  padding: 2rem;
+  box-shadow: var(--shadow-md);
+}
+
+/* ==================== UPLOAD AREA ==================== */
+.upload-area {
+  border: 2px dashed var(--border-color);
+  border-radius: 16px;
+  padding: 3rem 2rem;
+  text-align: center;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: var(--bg-secondary);
+  position: relative;
+}
+
+.upload-area:hover,
+.upload-area.drag-over {
+  border-color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.05);
+}
+
+.upload-placeholder {
+  color: var(--text-secondary);
+}
+
+.upload-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+}
+
+.upload-placeholder p {
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  color: var(--text-primary);
+}
+
+.upload-hint {
+  font-size: 0.9rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.upload-formats {
+  font-size: 0.8rem;
+  opacity: 0.7;
+}
+
+.preview-container {
+  position: relative;
+  display: inline-block;
+}
+
+.preview-image {
+  max-width: 100%;
+  max-height: 350px;
+  border-radius: 12px;
+  object-fit: contain;
+}
+
+.clear-image-btn {
+  position: absolute;
+  top: -10px;
+  right: -10px;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: #ef4444;
+  color: white;
+  border: none;
+  cursor: pointer;
+  font-size: 1rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.2);
+  transition: transform 0.2s ease;
+}
+
+.clear-image-btn:hover {
+  transform: scale(1.1);
+}
+/* ==================== SCAN MODE TOGGLE ==================== */
+
+.scan-mode-toggle {
+  display: flex;
+  gap: 0.5rem;
+  margin-bottom: 1.5rem;
+  background: var(--bg-secondary);
+  padding: 0.4rem;
+  border-radius: 12px;
+  border: 1px solid var(--border-color);
+}
+
+.mode-btn {
+  flex: 1;
+  padding: 0.65rem 1rem;
+  border: none;
+  border-radius: 8px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  background: transparent;
+  color: var(--text-secondary);
+}
+
+.mode-btn.active {
+  background: var(--gradient-primary);
+  color: white;
+  box-shadow: 0 2px 8px rgba(99, 102, 241, 0.3);
+}
+
+.mode-btn:hover:not(.active) {
+  background: var(--bg-glass);
+  color: var(--text-primary);
+}
+
+/* ==================== CAMERA ==================== */
+
+.camera-container {
+  position: relative;
+  border-radius: 16px;
+  overflow: hidden;
+  background: #000;
+  margin-bottom: 1rem;
+  aspect-ratio: 4/3;                    /* ✅ consistent size */
+  max-height: 400px;
+}
+
+.camera-feed {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+  display: block;
+}
+
+/* ── Camera grid overlay ── */
+.camera-container::before {
+  content: '';
+  position: absolute;
+  inset: 0;
+  background:
+    linear-gradient(rgba(255,255,255,0.05) 1px, transparent 1px),
+    linear-gradient(90deg, rgba(255,255,255,0.05) 1px, transparent 1px);
+  background-size: 33.33% 33.33%;
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ── Camera controls bar ── */
+.camera-controls {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 1rem;
+  padding: 1rem;
+  background: linear-gradient(transparent, rgba(0,0,0,0.7));
+  z-index: 2;
+}
+
+.camera-btn {
+  border: none;
+  border-radius: var(--radius-full);
+  cursor: pointer;
+  font-weight: 600;
+  font-size: 0.85rem;
+  transition: all 0.2s ease;
+  padding: 0.6rem 1.2rem;
+}
+
+/* Capture — big prominent button */
+.capture-btn {
+  background: white;
+  color: #111;
+  padding: 0.8rem 1.8rem;
+  font-size: 1rem;
+  box-shadow: 0 4px 15px rgba(0,0,0,0.4);
+}
+
+.capture-btn:hover {
+  background: #f0f0f0;
+  transform: scale(1.05);
+}
+
+.capture-btn:active {
+  transform: scale(0.97);
+}
+
+/* Flip & Close — smaller */
+.flip-btn,
+.close-btn {
+  background: rgba(255,255,255,0.2);
+  color: white;
+  backdrop-filter: blur(4px);
+  border: 1px solid rgba(255,255,255,0.3);
+}
+
+.flip-btn:hover,
+.close-btn:hover {
+  background: rgba(255,255,255,0.3);
+}
+
+/* ── Camera hint text ── */
+.camera-hint {
+  position: absolute;
+  top: 1rem;
+  left: 50%;
+  transform: translateX(-50%);
+  background: rgba(0,0,0,0.6);
+  color: white;
+  font-size: 0.8rem;
+  padding: 0.3rem 0.8rem;
+  border-radius: var(--radius-full);
+  white-space: nowrap;
+  z-index: 2;
+  pointer-events: none;
+}
+
+/* ── Responsive ── */
+@media (max-width: 576px) {
+  .camera-container {
+    aspect-ratio: 3/4;               /* portrait on mobile */
+    max-height: 500px;
+  }
+
+  .camera-controls {
+    gap: 0.75rem;
+    padding: 0.75rem;
+  }
+
+  .capture-btn {
+    padding: 0.7rem 1.4rem;
+  }
+}
+
+/* ==================== ANALYZE BUTTON ==================== */
+.analyze-btn {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.75rem;
+  width: 100%;
+  padding: 1rem 2rem;
+  margin-top: 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.analyze-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.analyze-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+.btn-spinner {
+  width: 20px;
+  height: 20px;
+  border: 2px solid rgba(255, 255, 255, 0.3);
+  border-top-color: white;
+  border-radius: 50%;
+  animation: spin 0.8s linear infinite;
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
+
+/* ==================== DETECTION RESULTS ==================== */
+.detection-results,
+.nutrition-results {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.detection-results h3,
+.nutrition-results h3 {
+  margin-bottom: 1rem;
+  color: var(--text-primary);
+}
+
+.detected-food-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 1.25rem 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 12px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.food-info {
+  display: flex;
+  flex-direction: column;
+  gap: 0.25rem;
+}
+
+.food-name {
+  font-size: 1.3rem;
+  font-weight: 600;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.food-serving {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.confidence {
+  padding: 0.5rem 1rem;
+  border-radius: 20px;
+  font-size: 0.9rem;
+  font-weight: 500;
+}
+
+.confidence.high {
+  background: #dcfce7;
+  color: #16a34a;
+}
+
+.confidence.medium {
+  background: #fef3c7;
+  color: #d97706;
+}
+
+.confidence.low {
+  background: #fee2e2;
+  color: #dc2626;
+}
+
+.other-detected {
+  margin-top: 1rem;
+}
+
+.other-detected p {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+  margin-bottom: 0.5rem;
+}
+
+.food-tags {
+  display: flex;
+  gap: 0.5rem;
+  flex-wrap: wrap;
+}
+
+.food-tag {
+  padding: 0.4rem 0.8rem;
+  background: var(--bg-secondary);
+  border-radius: 20px;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+/* ==================== NUTRITION GRID ==================== */
+.nutrition-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+  margin: 1.5rem 0;
+}
+
+.nutrition-card {
+  text-align: center;
+  padding: 1.25rem 0.75rem;
+  border-radius: 12px;
+  background: var(--bg-secondary);
+  transition: transform 0.2s ease;
+}
+
+.nutrition-card:hover {
+  transform: translateY(-3px);
+}
+
+.nutrition-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.nutrition-value {
+  display: block;
+  font-size: 1.5rem;
+  font-weight: 700;
+}
+
+.nutrition-label {
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+.nutrition-card.calories {
+  background: #fff7ed;
+}
+.nutrition-card.calories .nutrition-value {
+  color: #ea580c;
+}
+
+.nutrition-card.protein {
+  background: #eff6ff;
+}
+.nutrition-card.protein .nutrition-value {
+  color: #2563eb;
+}
+
+.nutrition-card.carbs {
+  background: #fdf2f8;
+}
+.nutrition-card.carbs .nutrition-value {
+  color: #db2777;
+}
+
+.nutrition-card.fat {
+  background: #f0fdf4;
+}
+.nutrition-card.fat .nutrition-value {
+  color: #16a34a;
+}
+
+/* Dark mode nutrition cards */
+[data-theme="dark"] .nutrition-card.calories {
+  background: rgba(234, 88, 12, 0.15);
+}
+[data-theme="dark"] .nutrition-card.protein {
+  background: rgba(37, 99, 235, 0.15);
+}
+[data-theme="dark"] .nutrition-card.carbs {
+  background: rgba(219, 39, 119, 0.15);
+}
+[data-theme="dark"] .nutrition-card.fat {
+  background: rgba(22, 163, 74, 0.15);
+}
+
+/* ==================== LOG MEAL SECTION ==================== */
+.log-meal-section {
+  margin-top: 1.5rem;
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.log-meal-section h4 {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.meal-type-buttons {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 0.75rem;
+}
+
+.meal-btn {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  gap: 0.3rem;
+  padding: 1rem 0.5rem;
+  border: 2px solid var(--border-color);
+  background: var(--card-bg);
+  border-radius: 12px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.9rem;
+  color: var(--text-primary);
+}
+
+.meal-btn:hover:not(:disabled) {
+  border-color: var(--primary-color);
+  background: rgba(102, 126, 234, 0.05);
+  transform: translateY(-2px);
+}
+
+.meal-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.meal-btn span {
+  font-size: 1.3rem;
+}
+
+.meal-btn.breakfast:hover {
+  border-color: #f59e0b;
+  background: rgba(245, 158, 11, 0.1);
+}
+
+.meal-btn.lunch:hover {
+  border-color: #eab308;
+  background: rgba(234, 179, 8, 0.1);
+}
+
+.meal-btn.dinner:hover {
+  border-color: #6366f1;
+  background: rgba(99, 102, 241, 0.1);
+}
+
+.meal-btn.snack:hover {
+  border-color: #ec4899;
+  background: rgba(236, 72, 153, 0.1);
+}
+
+/* ==================== MANUAL SECTION ==================== */
+.manual-section h3 {
+  margin-bottom: 0.5rem;
+}
+
+.section-desc {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.manual-search {
+  display: flex;
+  gap: 0.75rem;
+  margin-bottom: 2rem;
+}
+
+.manual-search input {
+  flex: 1;
+  padding: 1rem 1.25rem;
+  border: 2px solid var(--border-color);
+  border-radius: 12px;
+  font-size: 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.manual-search input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.manual-search input::placeholder {
+  color: var(--text-secondary);
+}
+
+.manual-search button {
+  padding: 1rem 2rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  white-space: nowrap;
+}
+
+.manual-search button:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 20px rgba(102, 126, 234, 0.3);
+}
+
+.manual-search button:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+.quick-foods {
+  margin-top: 2rem;
+  padding-top: 2rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.quick-foods h4 {
+  margin-bottom: 1rem;
+  color: var(--text-secondary);
+}
+
+.quick-food-grid {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.quick-food-btn {
+  padding: 0.6rem 1.2rem;
+  background: var(--bg-secondary);
+  border: 1px solid var(--border-color);
+  border-radius: 20px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  color: var(--text-primary);
+  font-size: 0.9rem;
+}
+
+.quick-food-btn:hover {
+  background: var(--primary-color);
+  color: white;
+  border-color: var(--primary-color);
+  transform: translateY(-2px);
+}
+
+/* ==================== PROGRESS SECTION ==================== */
+.daily-summary {
+  text-align: center;
+}
+
+.daily-summary h3 {
+  margin-bottom: 2rem;
+}
+
+/* Calories Ring */
+.calories-ring-container {
+  margin-bottom: 2.5rem;
+}
+
+.calories-ring {
+  position: relative;
+  width: 200px;
+  height: 200px;
+  margin: 0 auto;
+}
+
+.calories-ring svg {
+  transform: rotate(-90deg);
+  width: 100%;
+  height: 100%;
+}
+
+.ring-bg {
+  stroke: var(--border-color);
+}
+
+.ring-progress {
+  transition: stroke-dashoffset 0.5s ease, stroke 0.3s ease;
+}
+
+.ring-content {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  text-align: center;
+}
+
+.ring-content .consumed {
+  display: block;
+  font-size: 2.2rem;
+  font-weight: 700;
+  color: var(--text-primary);
+}
+
+.ring-content .target {
+  font-size: 0.95rem;
+  color: var(--text-secondary);
+}
+
+.ring-content .unit {
+  display: block;
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.2rem;
+}
+
+.remaining {
+  margin-top: 1rem;
+  font-size: 1rem;
+  color: var(--text-secondary);
+}
+
+.remaining.over {
+  color: #ef4444;
+  font-weight: 500;
+}
+
+/* Macro Progress */
+.macro-progress {
+  max-width: 500px;
+  margin: 0 auto 2rem;
+  text-align: left;
+}
+
+.macro-item {
+  margin-bottom: 1.25rem;
+}
+
+.macro-header {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 0.5rem;
+  font-size: 0.95rem;
+}
+
+.macro-label {
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.macro-values {
+  color: var(--text-secondary);
+}
+
+.progress-bar {
+  height: 10px;
+  background: var(--bg-secondary);
+  border-radius: 5px;
+  overflow: hidden;
+}
+
+.progress {
+  height: 100%;
+  border-radius: 5px;
+  transition: width 0.5s ease;
+}
+
+.progress.protein {
+  background: linear-gradient(90deg, #3b82f6, #60a5fa);
+}
+
+.progress.carbs {
+  background: linear-gradient(90deg, #ec4899, #f472b6);
+}
+
+.progress.fat {
+  background: linear-gradient(90deg, #22c55e, #4ade80);
+}
+
+.progress.water {
+  background: linear-gradient(90deg, #0ea5e9, #38bdf8);
+}
+
+/* Water Tracking */
+.water-tracking {
+  max-width: 500px;
+  margin: 0 auto;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.1), rgba(56, 189, 248, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(14, 165, 233, 0.2);
+}
+
+.water-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 1rem;
+}
+
+.water-header h4 {
+  margin: 0;
+  color: #0ea5e9;
+}
+
+.water-total {
+  font-size: 0.9rem;
+  color: var(--text-secondary);
+}
+
+.water-bar {
+  margin-bottom: 1rem;
+  height: 12px;
+}
+
+.water-input {
+  display: flex;
+  flex-direction: column;
+  gap: 0.75rem;
+}
+
+.water-presets {
+  display: flex;
+  gap: 0.5rem;
+  justify-content: center;
+}
+
+.water-preset {
+  padding: 0.5rem 1rem;
+  background: var(--card-bg);
+  border: 1px solid var(--border-color);
+  border-radius: 8px;
+  cursor: pointer;
+  transition: all 0.2s ease;
+  font-size: 0.85rem;
+  color: var(--text-primary);
+}
+
+.water-preset:hover,
+.water-preset.active {
+  background: #0ea5e9;
+  color: white;
+  border-color: #0ea5e9;
+}
+
+.add-water-btn {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, #0ea5e9, #38bdf8);
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.add-water-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 5px 15px rgba(14, 165, 233, 0.3);
+}
+
+.add-water-btn:disabled {
+  opacity: 0.6;
+  cursor: not-allowed;
+}
+
+/* No Data State */
+.no-data {
+  padding: 3rem;
+  text-align: center;
+}
+
+.no-data-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.no-data p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.no-data button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.no-data button:hover {
+  transform: translateY(-2px);
+}
+
+/* ==================== MEALS SECTION ==================== */
+.meals-section h3 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.empty-meals {
+  text-align: center;
+  padding: 3rem;
+}
+
+.empty-icon {
+  font-size: 4rem;
+  display: block;
+  margin-bottom: 1rem;
+  opacity: 0.5;
+}
+
+.empty-meals p {
+  color: var(--text-secondary);
+  margin-bottom: 1.5rem;
+}
+
+.empty-meals button {
+  padding: 0.75rem 1.5rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 10px;
+  font-weight: 500;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.empty-meals button:hover {
+  transform: translateY(-2px);
+}
+
+.meals-list {
+  display: flex;
+  flex-direction: column;
+  gap: 1.5rem;
+}
+
+.meal-group {
+  background: var(--bg-secondary);
+  border-radius: 16px;
+  padding: 1.25rem;
+}
+
+.meal-group-title {
+  font-size: 1rem;
+  margin-bottom: 1rem;
+  padding-bottom: 0.75rem;
+  border-bottom: 1px solid var(--border-color);
+  color: var(--text-primary);
+}
+
+.meal-group-title.breakfast {
+  color: #f59e0b;
+}
+
+.meal-group-title.lunch {
+  color: #eab308;
+}
+
+.meal-group-title.dinner {
+  color: #6366f1;
+}
+
+.meal-group-title.snack {
+  color: #ec4899;
+}
+
+.meal-card {
+  display: flex;
+  justify-content: space-between;
+  align-items: flex-start;
+  padding: 1rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  margin-bottom: 0.75rem;
+  border: 1px solid var(--border-color);
+}
+
+.meal-card:last-child {
+  margin-bottom: 0;
+}
+
+.meal-info {
+  flex: 1;
+}
+
+.meal-info h5 {
+  margin: 0 0 0.5rem 0;
+  font-size: 1rem;
+  color: var(--text-primary);
+  text-transform: capitalize;
+}
+
+.ai-badge {
+  display: inline-block;
+  padding: 0.2rem 0.6rem;
+  background: rgba(102, 126, 234, 0.15);
+  color: var(--primary-color);
+  border-radius: 12px;
+  font-size: 0.75rem;
+  margin-bottom: 0.5rem;
+}
+
+.meal-macros {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.5rem;
+}
+
+.meal-macros .macro {
+  font-size: 0.8rem;
+  padding: 0.25rem 0.5rem;
+  background: var(--bg-secondary);
+  border-radius: 6px;
+  color: var(--text-secondary);
+}
+
+.meal-macros .macro.cal {
+  color: #ea580c;
+}
+
+.meal-macros .macro.pro {
+  color: #2563eb;
+}
+
+.meal-macros .macro.carb {
+  color: #db2777;
+}
+
+.meal-macros .macro.fat {
+  color: #16a34a;
+}
+
+.delete-meal-btn {
+  background: none;
+  border: none;
+  font-size: 1.1rem;
+  cursor: pointer;
+  opacity: 0.5;
+  transition: all 0.2s ease;
+  padding: 0.5rem;
+}
+
+.delete-meal-btn:hover {
+  opacity: 1;
+  transform: scale(1.1);
+}
+
+/* Daily Totals */
+.daily-totals {
+  margin-top: 1.5rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.daily-totals h4 {
+  margin-bottom: 1rem;
+  text-align: center;
+  color: var(--text-primary);
+}
+
+.totals-grid {
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  gap: 1rem;
+}
+
+.total-item {
+  text-align: center;
+}
+
+.total-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.total-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+}
+
+/* ==================== GOALS SECTION ==================== */
+.goals-section h3 {
+  margin-bottom: 1.5rem;
+  text-align: center;
+}
+
+.current-goals {
+  margin-bottom: 2rem;
+  padding: 1.5rem;
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.1), rgba(118, 75, 162, 0.1));
+  border-radius: 16px;
+  border: 1px solid rgba(102, 126, 234, 0.2);
+}
+
+.current-goals h4 {
+  margin-bottom: 1.25rem;
+  text-align: center;
+  color: var(--text-secondary);
+  font-weight: 500;
+}
+
+.goals-grid {
+  display: grid;
+  grid-template-columns: repeat(5, 1fr);
+  gap: 1rem;
+}
+
+.goal-item {
+  text-align: center;
+  padding: 1rem 0.5rem;
+  background: var(--card-bg);
+  border-radius: 12px;
+  box-shadow: var(--shadow-sm);
+}
+
+.goal-icon {
+  font-size: 1.5rem;
+  display: block;
+  margin-bottom: 0.5rem;
+}
+
+.goal-value {
+  display: block;
+  font-size: 1.3rem;
+  font-weight: 700;
+  color: var(--primary-color);
+}
+
+.goal-label {
+  font-size: 0.8rem;
+  color: var(--text-secondary);
+  margin-top: 0.25rem;
+}
+
+/* Goals Form */
+.goals-form {
+  padding-top: 1.5rem;
+  border-top: 1px solid var(--border-color);
+}
+
+.goals-form h4 {
+  margin-bottom: 1.5rem;
+  color: var(--text-primary);
+}
+
+.form-group {
+  margin-bottom: 1.5rem;
+}
+
+.form-group label {
+  display: block;
+  margin-bottom: 0.5rem;
+  font-weight: 500;
+  color: var(--text-primary);
+}
+
+.form-group select,
+.form-group input {
+  width: 100%;
+  padding: 0.875rem 1rem;
+  border: 2px solid var(--border-color);
+  border-radius: 10px;
+  font-size: 1rem;
+  background: var(--bg-secondary);
+  color: var(--text-primary);
+  transition: border-color 0.3s ease;
+}
+
+.form-group select:focus,
+.form-group input:focus {
+  outline: none;
+  border-color: var(--primary-color);
+}
+
+.form-hint {
+  display: block;
+  margin-top: 0.5rem;
+  font-size: 0.85rem;
+  color: var(--text-secondary);
+}
+
+.submit-btn {
+  width: 100%;
+  padding: 1rem;
+  background: linear-gradient(135deg, var(--primary-color), var(--secondary-color));
+  color: white;
+  border: none;
+  border-radius: 12px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: all 0.3s ease;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+}
+
+.submit-btn:hover:not(:disabled) {
+  transform: translateY(-2px);
+  box-shadow: 0 8px 25px rgba(102, 126, 234, 0.4);
+}
+
+.submit-btn:disabled {
+  opacity: 0.7;
+  cursor: not-allowed;
+}
+
+/* Goal Tips */
+.goal-tips {
+  margin-top: 2rem;
+  padding: 1.5rem;
+  background: rgba(34, 197, 94, 0.1);
+  border-radius: 12px;
+  border: 1px solid rgba(34, 197, 94, 0.2);
+}
+
+.goal-tips h4 {
+  margin-bottom: 1rem;
+  color: #16a34a;
+}
+
+.goal-tips ul {
+  margin: 0;
+  padding-left: 1.25rem;
+}
+
+.goal-tips li {
+  margin-bottom: 0.5rem;
+  color: var(--text-secondary);
+  font-size: 0.95rem;
+}
+
+.goal-tips li:last-child {
+  margin-bottom: 0;
+}
+
+/* ==================== RESPONSIVE DESIGN ==================== */
+@media (max-width: 768px) {
+  .calories-page {
+    padding: 1rem 0.75rem;
+    padding-top: 80px;
+  }
+
+  .calories-header h1 {
+    font-size: 1.8rem;
+  }
+
+  .calories-tabs {
+    padding: 0.4rem;
+    gap: 0.25rem;
+  }
+
+  .tab-btn {
+    min-width: 70px;
+    padding: 0.6rem 0.3rem;
+  }
+
+  .tab-icon {
+    font-size: 1.1rem;
+  }
+
+  .tab-text {
+    font-size: 0.7rem;
+  }
+
+  .tab-content {
+    padding: 1.25rem;
+  }
+
+  .upload-area {
+    padding: 2rem 1rem;
+  }
+
+  .upload-icon {
+    font-size: 3rem;
+  }
+
+  .nutrition-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .meal-type-buttons {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .manual-search {
+    flex-direction: column;
+  }
+
+  .manual-search button {
+    width: 100%;
+  }
+
+  .goals-grid {
+    grid-template-columns: repeat(3, 1fr);
+  }
+
+  .totals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .detected-food-card {
+    flex-direction: column;
+    align-items: flex-start;
+    gap: 0.75rem;
+  }
+
+  .water-presets {
+    flex-wrap: wrap;
+  }
+}
+
+@media (max-width: 480px) {
+  .calories-header h1 {
+    font-size: 1.5rem;
+  }
+
+  .calories-header p {
+    font-size: 0.95rem;
+  }
+
+  .nutrition-card {
+    padding: 1rem 0.5rem;
+  }
+
+  .nutrition-value {
+    font-size: 1.25rem;
+  }
+
+  .goals-grid {
+    grid-template-columns: repeat(2, 1fr);
+  }
+
+  .goal-item:last-child {
+    grid-column: span 2;
+  }
+
+  .calories-ring {
+    width: 160px;
+    height: 160px;
+  }
+
+  .ring-content .consumed {
+    font-size: 1.8rem;
+  }
+
+  .quick-food-btn {
+    padding: 0.5rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ==================== DARK MODE ADJUSTMENTS ==================== */
+[data-theme="dark"] .upload-area:hover,
+[data-theme="dark"] .upload-area.drag-over {
+  background: rgba(102, 126, 234, 0.1);
+}
+
+[data-theme="dark"] .detected-food-card {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+}
+
+[data-theme="dark"] .current-goals,
+[data-theme="dark"] .daily-totals {
+  background: linear-gradient(135deg, rgba(102, 126, 234, 0.15), rgba(118, 75, 162, 0.15));
+}
+
+[data-theme="dark"] .water-tracking {
+  background: linear-gradient(135deg, rgba(14, 165, 233, 0.15), rgba(56, 189, 248, 0.15));
+}
+
+[data-theme="dark"] .goal-tips {
+  background: rgba(34, 197, 94, 0.15);
+}
+
+[data-theme="dark"] .error-message {
+  background: rgba(220, 38, 38, 0.15);
+  border-color: rgba(220, 38, 38, 0.3);
+}
+
+[data-theme="dark"] .success-message {
+  background: rgba(22, 163, 74, 0.15);
+  border-color: rgba(22, 163, 74, 0.3);
+}
+
+[data-theme="dark"] .meal-group {
+  background: rgba(255, 255, 255, 0.03);
+}
+
+[data-theme="dark"] .confidence.high {
+  background: rgba(22, 163, 74, 0.2);
+}
+
+[data-theme="dark"] .confidence.medium {
+  background: rgba(217, 119, 6, 0.2);
+}
+
+[data-theme="dark"] .confidence.low {
+  background: rgba(220, 38, 38, 0.2);
+}
