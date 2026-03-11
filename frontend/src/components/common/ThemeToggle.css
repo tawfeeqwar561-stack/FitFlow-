@@ -1,27 +1,109 @@
+/* ==================== THEME TOGGLE ==================== */
+
 .theme-toggle {
+  background: none;
+  border: none;
+  cursor: pointer;
+  padding: 0;
   display: flex;
   align-items: center;
   justify-content: center;
-  width: 44px;
-  height: 44px;
+  border-radius: var(--radius-full);
+  transition: var(--transition-normal);
+}
+
+.theme-toggle:focus-visible {
+  outline: 2px solid var(--primary-color);
+  outline-offset: 2px;
+}
+
+/* ── Toggle Track ─────────────────────────────────────── */
+.toggle-track {
+  position: relative;
+  width: 56px;
+  height: 28px;
   background: var(--bg-glass);
   border: 1px solid var(--border-color);
-  border-radius: var(--radius-md);
-  cursor: pointer;
-  transition: var(--transition-normal);
+  border-radius: var(--radius-full);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  padding: 0 6px;
+  transition: all 0.3s ease;
+  overflow: hidden;
 }
 
-.theme-toggle:hover {
-  background: var(--bg-glass-hover);
+/* Dark mode track */
+.theme-toggle.dark .toggle-track {
+  background: rgba(99, 102, 241, 0.15);
+  border-color: rgba(99, 102, 241, 0.3);
+}
+
+/* Light mode track */
+.theme-toggle.light .toggle-track {
+  background: rgba(245, 158, 11, 0.15);
+  border-color: rgba(245, 158, 11, 0.3);
+}
+
+/* ── Icons ────────────────────────────────────────────── */
+.toggle-icon {
+  font-size: 0.75rem;
+  line-height: 1;
+  z-index: 1;
+  transition: opacity 0.3s ease;
+  user-select: none;
+}
+
+/* Sun visible in light mode, faded in dark */
+.theme-toggle.dark  .sun  { opacity: 0.3; }
+.theme-toggle.light .sun  { opacity: 1; }
+
+/* Moon visible in dark mode, faded in light */
+.theme-toggle.dark  .moon { opacity: 1; }
+.theme-toggle.light .moon { opacity: 0.3; }
+
+/* ── Sliding Thumb ────────────────────────────────────── */
+.toggle-thumb {
+  position: absolute;
+  top: 3px;
+  width: 22px;
+  height: 22px;
+  border-radius: 50%;
+  background: var(--gradient-primary);
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.3);
+  transition: transform 0.3s cubic-bezier(0.68, -0.55, 0.265, 1.55);
+                                        /* ✅ bounce effect */
+}
+
+/* Dark: thumb on right */
+.theme-toggle.dark  .toggle-thumb { transform: translateX(28px); }
+
+/* Light: thumb on left */
+.theme-toggle.light .toggle-thumb { transform: translateX(0px); }
+
+/* ── Hover Effects ────────────────────────────────────── */
+.theme-toggle:hover .toggle-track {
   border-color: var(--primary-color);
-  transform: rotate(15deg);
+  box-shadow: 0 0 8px var(--primary-glow);
 }
 
-.theme-icon {
-  font-size: 1.25rem;
-  transition: var(--transition-normal);
+.theme-toggle:active .toggle-thumb {
+  width: 26px;                          /* ✅ stretch on press */
 }
 
-.theme-toggle:hover .theme-icon {
-  transform: scale(1.2);
+/* ── Responsive ──────────────────────────────────────── */
+@media (max-width: 768px) {
+  .toggle-track {
+    width: 48px;
+    height: 24px;
+  }
+
+  .toggle-thumb {
+    width: 18px;
+    height: 18px;
+    top: 2px;
+  }
+
+  .theme-toggle.dark  .toggle-thumb { transform: translateX(24px); }
+  .theme-toggle.light .toggle-thumb { transform: translateX(0px); }
 }

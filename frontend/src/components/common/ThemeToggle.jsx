@@ -3,19 +3,21 @@ import { useTheme } from '../../context/ThemeContext';
 import './ThemeToggle.css';
 
 const ThemeToggle = () => {
-  const { theme, toggleTheme } = useTheme();
+  const { theme, toggleTheme, isDark } = useTheme();
 
   return (
-    <button 
-      className="theme-toggle" 
+    <button
+      className={`theme-toggle ${isDark ? 'dark' : 'light'}`}
       onClick={toggleTheme}
-      aria-label="Toggle theme"
+      aria-label={`Switch to ${isDark ? 'light' : 'dark'} mode`}
+      title={`Switch to ${isDark ? 'light' : 'dark'} mode`}
     >
-      {theme === 'dark' ? (
-        <span className="theme-icon">☀️</span>
-      ) : (
-        <span className="theme-icon">🌙</span>
-      )}
+      {/* ✅ Track that slides */}
+      <div className="toggle-track">
+        <span className="toggle-icon sun">☀️</span>
+        <span className="toggle-icon moon">🌙</span>
+        <div className="toggle-thumb" />
+      </div>
     </button>
   );
 };
