@@ -1,43 +1,70 @@
 import api from './api';
 
 const authService = {
-  // Sign up
+
   signup: async (email, password) => {
-    const response = await api.post('/auth/signup', { email, password });
+    const response = await api.post('/auth/signup', {
+      email,
+      password
+    });
     return response.data;
   },
 
-  // Login
   login: async (email, password) => {
-    const formData = new FormData();
+    const formData = new URLSearchParams();
     formData.append('username', email);
     formData.append('password', password);
-    
+
     const response = await api.post('/auth/login', formData, {
-      headers: { 'Content-Type': 'application/x-www-form-urlencoded' },
+      headers: { 'Content-Type': 'application/x-www-form-urlencoded' }
     });
-    
-    if (response.data.access_token) {
-      localStorage.setItem('token', response.data.access_token);
+
+    // ✅ Auto-store token after login
+    if (response.data?.access_token) {
+      authService.setToken(response.data.access_token);
     }
+
     return response.data;
   },
 
-  // Logout
+  loginJson: async (email, password) => {
+    const response = await api.post('/auth/login/json', {
+      email,
+      password
+    });
+
+    // ✅ Auto-store token after login
+    if (response.data?.access_token) {
+      authService.setToken(response.data.access_token);
+    }
+
+    return response.data;
+  },
+
   logout: () => {
     localStorage.removeItem('token');
   },
 
-  // Get current user
+  getToken: () => {
+    return localStorage.getItem('token');
+  },
+
+  setToken: (token) => {
+    localStorage.setItem('token', token);
+  },
+
+  // ✅ ADDED: Was called in AuthContext but didn't exist
+  isLoggedIn: () => {
+    return !!localStorage.getItem('token');
+  },
+
+  // ✅ ADDED: Was called in AuthContext but didn't exist
+  //           Fetches current user from /api/users/me
   getCurrentUser: async () => {
     const response = await api.get('/users/me');
     return response.data;
   },
 
-  // Check if logged in
-  isLoggedIn: () => {
-    return !!localStorage.getItem('token');
-  },
 };
 
 export default authService;

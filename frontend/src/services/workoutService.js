@@ -1,50 +1,38 @@
 import api from './api';
 
 const workoutService = {
-  // Get all categories
-  getCategories: async () => {
-    const response = await api.get('/workouts/categories');
+
+  getSessions: async () => {
+    const response = await api.get('/workouts/sessions');   // ✅ no /api prefix
     return response.data;
   },
 
-  // Get exercises by category
-  getExercisesByCategory: async (categoryId, difficulty = null) => {
-    let url = `/workouts/categories/${categoryId}/exercises`;
-    if (difficulty) {
-      url += `?difficulty=${difficulty}`;
-    }
-    const response = await api.get(url);
+  createSession: async (sessionData) => {
+    const response = await api.post('/workouts/sessions', sessionData);
     return response.data;
   },
 
-  // Get exercises by difficulty
-  getExercisesByDifficulty: async (level) => {
-    const response = await api.get(`/workouts/difficulty/${level}`);
+  getSession: async (sessionId) => {
+    const response = await api.get(`/workouts/sessions/${sessionId}`);
     return response.data;
   },
 
-  // Start workout session
-  startSession: async (exerciseId) => {
-    const response = await api.post('/workouts/sessions/start', {
-      exercise_id: exerciseId,
-    });
+  updateSession: async (sessionId, sessionData) => {
+    const response = await api.put(`/workouts/sessions/${sessionId}`, sessionData);
     return response.data;
   },
 
-  // End workout session
-  endSession: async (sessionId, durationSeconds, completed = true) => {
-    const response = await api.post(`/workouts/sessions/${sessionId}/end`, {
-      duration_seconds: durationSeconds,
-      completed: completed,
-    });
+  deleteSession: async (sessionId) => {
+    const response = await api.delete(`/workouts/sessions/${sessionId}`);
     return response.data;
   },
 
-  // Get workout history
-  getHistory: async (limit = 20) => {
-    const response = await api.get(`/workouts/history?limit=${limit}`);
+  getExercises: async (level = null) => {
+    const params = level ? { level } : {};
+    const response = await api.get('/workouts/exercises', { params });
     return response.data;
   },
+
 };
 
 export default workoutService;
