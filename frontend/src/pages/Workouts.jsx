@@ -4,7 +4,7 @@ import workoutService from '../services/workoutService';
 import useTimer from '../hooks/useTimer';
 import Loader from '../components/common/Loader';
 import './Workouts.css';
-
+import WorkoutAnimation from '../components/workout/WorkoutAnimation';
 const exerciseData = {
   beginner: [
     { id: 1, name: 'Push Ups', category: 'Chest', duration: 60, reps: 10 },
@@ -118,51 +118,57 @@ const Workouts = () => {
           </div>
         </div>
 
-        {/* Active Workout Modal */}
-        {isWorkoutActive && selectedExercise && (
-          <div className="workout-modal-overlay">
-            <div className="workout-modal">
-              <div className="workout-modal-header">
-                <span className="exercise-category-icon">
-                  {categoryIcons[selectedExercise.category]}
-                </span>
-                <h2>{selectedExercise.name}</h2>
-                <p>{selectedExercise.category}</p>
-              </div>
+{/* Active Workout Modal */}
+{isWorkoutActive && selectedExercise && (
+  <div className="workout-modal-overlay">
+    <div className="workout-modal">
 
-              <div className="timer-display">
-                <span className="timer-value">{formatTime()}</span>
-                <p className="timer-label">Time Elapsed</p>
-              </div>
+      {/* Header */}
+      <div className="workout-modal-header">
+        <h2>{selectedExercise.name}</h2>
+        <p>{selectedExercise.category}</p>
+      </div>
 
-              {selectedExercise.reps && (
-                <div className="reps-info">
-                  <span className="reps-value">{selectedExercise.reps}</span>
-                  <span className="reps-label">Reps</span>
-                </div>
-              )}
+      {/* ✅ Animation — plays when running, pauses when paused */}
+      <WorkoutAnimation
+        exerciseName={selectedExercise.name}
+        isRunning={isRunning}
+      />
 
-              <div className="workout-modal-actions">
-                {isRunning ? (
-                  <button onClick={pause} className="btn btn-warning">
-                    ⏸ Pause
-                  </button>
-                ) : (
-                  <button onClick={start} className="btn btn-primary">
-                    ▶ Resume
-                  </button>
-                )}
-                <button onClick={completeExercise} className="btn btn-secondary">
-                   Complete
-                </button>
-                <button onClick={cancelExercise} className="btn btn-danger">
-                   Cancel
-                </button>
-              </div>
-            </div>
-          </div>
+      {/* Timer */}
+      <div className="timer-display">
+        <span className="timer-value">{formatTime()}</span>
+        <p className="timer-label">Time Elapsed</p>
+      </div>
+
+      {selectedExercise.reps && (
+        <div className="reps-info">
+          <span className="reps-value">{selectedExercise.reps}</span>
+          <span className="reps-label">Reps</span>
+        </div>
+      )}
+
+      <div className="workout-modal-actions">
+        {isRunning ? (
+          <button onClick={pause} className="btn btn-warning">
+            ⏸ Pause
+          </button>
+        ) : (
+          <button onClick={start} className="btn btn-primary">
+            ▶ Resume
+          </button>
         )}
+        <button onClick={completeExercise} className="btn btn-secondary">
+          ✅ Complete
+        </button>
+        <button onClick={cancelExercise} className="btn btn-danger">
+          ❌ Cancel
+        </button>
+      </div>
 
+    </div>
+  </div>
+)}
         {/* Exercise List */}
         <div className="exercises-grid">
           {exercises.map((exercise) => (
@@ -173,7 +179,7 @@ const Workouts = () => {
               }`}
             >
               <div className="exercise-icon">
-                {categoryIcons[exercise.category] || '🏃'}
+                {categoryIcons[exercise.category] || ''}
               </div>
               <div className="exercise-info">
                 <h3>{exercise.name}</h3>
