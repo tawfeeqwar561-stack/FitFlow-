@@ -1,0 +1,220 @@
+/* ── Wrapper ─────────────────────────────────────────────────────────────── */
+.workout-animation-wrap {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  margin: var(--spacing-lg) auto;
+  width: 180px;
+  height: 160px;
+}
+
+/* ── SVG Figure Base ─────────────────────────────────────────────────────── */
+.figure {
+  width: 140px;
+  height: 130px;
+  filter: drop-shadow(0 4px 12px rgba(99, 102, 241, 0.4));
+  transition: all 0.3s ease;
+}
+
+/* ── Ground Line ─────────────────────────────────────────────────────────── */
+.animation-ground {
+  width: 140px;
+  height: 3px;
+  background: linear-gradient(90deg, transparent, var(--primary-color), transparent);
+  border-radius: 2px;
+  margin-top: -8px;
+  opacity: 0.5;
+}
+
+/* ── Energy Particles (show when running) ────────────────────────────────── */
+.animation-particles {
+  position: absolute;
+  inset: 0;
+  pointer-events: none;
+}
+
+.animation-particles span {
+  position: absolute;
+  width: 6px;
+  height: 6px;
+  border-radius: 50%;
+  background: var(--primary-color);
+  animation: particle 1.5s ease-in-out infinite;
+}
+
+.animation-particles span:nth-child(1) {
+  left: 20%;
+  top: 60%;
+  animation-delay: 0s;
+}
+.animation-particles span:nth-child(2) {
+  left: 75%;
+  top: 50%;
+  animation-delay: 0.5s;
+}
+.animation-particles span:nth-child(3) {
+  left: 50%;
+  top: 70%;
+  animation-delay: 1s;
+}
+
+@keyframes particle {
+  0%   { opacity: 0; transform: translateY(0) scale(0); }
+  50%  { opacity: 1; transform: translateY(-20px) scale(1); }
+  100% { opacity: 0; transform: translateY(-40px) scale(0); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PUSH UP ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-pushup .figure:not(.paused) .pushup-body {
+  animation: pushupMove 1.2s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes pushupMove {
+  0%   { transform: translateY(0px); }
+  40%  { transform: translateY(12px); }
+  60%  { transform: translateY(12px); }
+  100% { transform: translateY(0px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   SQUAT ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-squat .figure:not(.paused) .squat-body {
+  animation: squatMove 1.4s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes squatMove {
+  0%   { transform: scaleY(1)    translateY(0px); }
+  45%  { transform: scaleY(0.78) translateY(10px); }
+  55%  { transform: scaleY(0.78) translateY(10px); }
+  100% { transform: scaleY(1)    translateY(0px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PLANK ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-plank .figure:not(.paused) .plank-body {
+  animation: plankPulse 2s ease-in-out infinite;
+  transform-origin: center;
+}
+
+@keyframes plankPulse {
+  0%,100% { transform: scaleX(1)    translateY(0px); }
+  50%     { transform: scaleX(1.03) translateY(-3px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   JUMPING JACK ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-jumping-jack .figure:not(.paused) .jack-body {
+  animation: jackMove 0.8s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes jackMove {
+  0%,100% { transform: scaleX(1)    translateY(0px); }
+  50%     { transform: scaleX(0.75) translateY(-8px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   LUNGE ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-lunge .figure:not(.paused) .lunge-body {
+  animation: lungeMove 1.6s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes lungeMove {
+  0%,100% { transform: translateX(0px)  translateY(0px); }
+  50%     { transform: translateX(-8px) translateY(6px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   MOUNTAIN CLIMBER ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-mountain-climber .figure:not(.paused) .climber-body {
+  animation: climberMove 0.7s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes climberMove {
+  0%,100% { transform: skewX(0deg)  translateY(0px); }
+  50%     { transform: skewX(-8deg) translateY(-5px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   HANGING LEG RAISES ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-hanging .figure:not(.paused) .hanging-body {
+  animation: hangingMove 1.8s ease-in-out infinite;
+  transform-origin: center top;
+}
+
+@keyframes hangingMove {
+  0%,100% { transform: scaleY(1)    translateY(0px); }
+  50%     { transform: scaleY(0.88) translateY(5px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BICYCLE CRUNCH ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-bicycle .figure:not(.paused) .bicycle-body {
+  animation: bicycleMove 0.9s ease-in-out infinite;
+  transform-origin: center center;
+}
+
+@keyframes bicycleMove {
+  0%,100% { transform: rotate(0deg)  translateX(0px); }
+  25%     { transform: rotate(-5deg) translateX(-3px); }
+  75%     { transform: rotate(5deg)  translateX(3px); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   BURPEE ANIMATION
+═══════════════════════════════════════════════════════════════════════════ */
+.anim-burpee .figure:not(.paused) .jack-body {
+  animation: burpeeMove 1s ease-in-out infinite;
+  transform-origin: center bottom;
+}
+
+@keyframes burpeeMove {
+  0%,100% { transform: translateY(0px)  scaleY(1); }
+  30%     { transform: translateY(-15px) scaleY(1.1); }
+  60%     { transform: translateY(0px)  scaleY(0.8); }
+}
+
+/* ═══════════════════════════════════════════════════════════════════════════
+   PAUSED STATE — all animations stop
+═══════════════════════════════════════════════════════════════════════════ */
+.workout-animation-wrap.paused .figure,
+.workout-animation-wrap.paused .figure * {
+  animation-play-state: paused !important;
+}
+
+/* Dim the figure when paused */
+.workout-animation-wrap.paused .figure {
+  opacity: 0.5;
+  filter: grayscale(0.6) drop-shadow(0 2px 6px rgba(99,102,241,0.2));
+}
+
+/* Paused indicator */
+.workout-animation-wrap.paused::after {
+  content: '⏸ Paused';
+  position: absolute;
+  bottom: -8px;
+  left: 50%;
+  transform: translateX(-50%);
+  font-size: 0.7rem;
+  color: var(--text-muted);
+  white-space: nowrap;
+  background: var(--bg-glass);
+  padding: 2px 8px;
+  border-radius: var(--radius-full);
+  border: 1px solid var(--border-color);
+}
