@@ -1,0 +1,1 @@
+Fitness & Wellness Web App featuring Workout Programs (Beginner/Intermediate/Advanced), Mindfulness Tools, Food Calorie Detection, Medical Symptom Tracker, Medication Reminders & Personalized Recommendations. Stack: React, FastAPI, Postgresql.
