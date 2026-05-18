@@ -37,8 +37,9 @@ services:
         value: "3.13.0"
 
   # ── Frontend (React Static Site) ───────────────────────
-  - type: static
+  - type: web
     name: fitflow-frontend
+    runtime: static
     rootDir: frontend
     buildCommand: npm install && npm run build
     staticPublishPath: build
