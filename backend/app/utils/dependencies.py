@@ -2,7 +2,6 @@ from fastapi import Depends, HTTPException, status
 from fastapi.security import OAuth2PasswordBearer
 from sqlalchemy.ext.asyncio import AsyncSession
 from sqlalchemy import select
-from uuid import UUID                          # ✅ Added
 from app.database import get_db
 from app.utils.security import decode_access_token
 from app.models.user import User
@@ -32,17 +31,15 @@ async def get_current_user(
     if user_id is None:
         raise credentials_exception
 
-    # ✅ FIXED: Convert string → UUID before querying
-    #    PostgreSQL UUID columns won't match plain strings
-    #    This was a silent failure — query returns None
-    #    even when user exists
+    # ✅ FIXED: Convert string → int before querying
+    #    User.id is Integer
     try:
-        user_uuid = UUID(user_id)
+        user_int_id = int(user_id)
     except ValueError:
         raise credentials_exception          # ✅ Catches malformed token sub
 
     result = await db.execute(
-        select(User).where(User.id == user_uuid)  # ✅ UUID vs UUID (not str)
+        select(User).where(User.id == user_int_id)  # ✅ int vs int
     )
     user = result.scalar_one_or_none()
 

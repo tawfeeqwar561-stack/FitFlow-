@@ -1,7 +1,6 @@
 import uuid
 from datetime import datetime
-from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, String, Integer, DateTime, ForeignKey, Boolean, Uuid
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -9,8 +8,8 @@ from app.database import Base
 class MeditationSession(Base):
     __tablename__ = "meditation_sessions"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
+    id = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"))
     session_type = Column(String(50), default="meditation")  # meditation, minigame
     duration_seconds = Column(Integer, nullable=True)
     completed = Column(Boolean, default=False)

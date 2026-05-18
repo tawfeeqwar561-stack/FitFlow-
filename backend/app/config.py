@@ -10,6 +10,18 @@ class Settings(BaseSettings):
     # Database
     DATABASE_URL: str
 
+    @property
+    def ASYNC_DATABASE_URL(self) -> str:
+        """Convert DATABASE_URL to async-compatible format.
+        Render gives postgres:// but SQLAlchemy needs postgresql+asyncpg://
+        """
+        url = self.DATABASE_URL
+        if url.startswith("postgres://"):
+            url = url.replace("postgres://", "postgresql+asyncpg://", 1)
+        elif url.startswith("postgresql://"):
+            url = url.replace("postgresql://", "postgresql+asyncpg://", 1)
+        return url
+
     # JWT Authentication
     SECRET_KEY: str
     ALGORITHM: str = "HS256"

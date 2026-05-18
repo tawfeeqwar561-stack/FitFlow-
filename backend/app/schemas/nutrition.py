@@ -16,7 +16,7 @@ class FoodLogCreate(BaseModel):
 
 class FoodLogResponse(BaseModel):
     id: UUID
-    user_id: UUID
+    user_id: int
     image_url: Optional[str]
     detected_food: Optional[str]
     calories: Optional[float]

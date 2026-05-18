@@ -1,6 +1,5 @@
 import uuid
-from sqlalchemy import Column, String, Integer, Text, ForeignKey
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, String, Integer, Text, ForeignKey, Uuid
 from sqlalchemy.orm import relationship
 from app.database import Base
 
@@ -8,7 +7,7 @@ from app.database import Base
 class ExerciseCategory(Base):
     __tablename__ = "exercise_categories"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
+    id = Column(Uuid, primary_key=True, default=uuid.uuid4)
     name = Column(String(100), nullable=False, unique=True)
     description = Column(Text, nullable=True)
     icon_url = Column(String(500), nullable=True)
@@ -20,8 +19,8 @@ class ExerciseCategory(Base):
 class Exercise(Base):
     __tablename__ = "exercises"
 
-    id = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    category_id = Column(UUID(as_uuid=True), ForeignKey("exercise_categories.id"))
+    id = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    category_id = Column(Uuid, ForeignKey("exercise_categories.id"))
     name = Column(String(200), nullable=False)
     description = Column(Text, nullable=True)
     difficulty_level = Column(String(20), nullable=False)  # beginner, intermediate, advanced

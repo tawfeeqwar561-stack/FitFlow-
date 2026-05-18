@@ -15,7 +15,7 @@ class MeditationSessionEnd(BaseModel):
 
 class MeditationSessionResponse(BaseModel):
     id: UUID
-    user_id: UUID
+    user_id: int
     session_type: str
     duration_seconds: Optional[int]
     completed: bool

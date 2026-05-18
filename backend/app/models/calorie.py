@@ -1,7 +1,6 @@
 import uuid
 from datetime import datetime, date
-from sqlalchemy import Column, String, Float, Integer, DateTime, Date, ForeignKey, Text
-from sqlalchemy.dialects.postgresql import UUID
+from sqlalchemy import Column, String, Float, Integer, DateTime, Date, ForeignKey, Text, Uuid
 from sqlalchemy.orm import relationship
 from app.database import Base
 import enum
@@ -37,8 +36,8 @@ class MealType(str, enum.Enum):
 class UserGoal(Base):
     __tablename__ = "user_goals"
 
-    id      = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"), unique=True)
+    id      = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"), unique=True)
 
     # Goal Settings
     goal_type      = Column(String(50), default=GoalType.MAINTENANCE.value)
@@ -62,8 +61,8 @@ class UserGoal(Base):
 class MealLog(Base):
     __tablename__ = "meal_logs"
 
-    id      = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
+    id      = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"))
 
     # Meal Info
     meal_type    = Column(String(50), default=MealType.SNACK.value)
@@ -97,8 +96,8 @@ class MealLog(Base):
 class DailyIntake(Base):
     __tablename__ = "daily_intakes"
 
-    id      = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
+    id      = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"))
 
     intake_date = Column(Date, default=date.today, index=True)
 
@@ -121,8 +120,8 @@ class DailyIntake(Base):
 class WaterLog(Base):
     __tablename__ = "water_logs"
 
-    id      = Column(UUID(as_uuid=True), primary_key=True, default=uuid.uuid4)
-    user_id = Column(UUID(as_uuid=True), ForeignKey("users.id"))
+    id      = Column(Uuid, primary_key=True, default=uuid.uuid4)
+    user_id = Column(Integer, ForeignKey("users.id"))
 
     amount    = Column(Float, nullable=False)  # in ml
     logged_at = Column(DateTime, default=datetime.utcnow)

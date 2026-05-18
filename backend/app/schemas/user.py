@@ -1,7 +1,6 @@
 from pydantic import BaseModel, EmailStr
 from typing import Optional
 from datetime import datetime
-from uuid import UUID
 
 
 # --- User Schemas ---
@@ -21,7 +20,7 @@ class GoogleLogin(BaseModel):
 
 
 class UserResponse(BaseModel):
-    id: UUID
+    id: int
     email: str
     is_active: bool
     created_at: datetime
@@ -61,8 +60,8 @@ class ProfileUpdate(BaseModel):
 
 
 class ProfileResponse(BaseModel):
-    id: UUID
-    user_id: UUID
+    id: int
+    user_id: int
     username: Optional[str] = None       # ✅ Added default
     age: Optional[int] = None            # ✅ Added default
     height: Optional[float] = None       # ✅ Added default
@@ -91,7 +90,7 @@ class ProfileResponse(BaseModel):
 
 
 class UserWithProfile(BaseModel):
-    id: UUID
+    id: int
     email: str
     profile: Optional[ProfileResponse] = None  # ✅ Added default
 
